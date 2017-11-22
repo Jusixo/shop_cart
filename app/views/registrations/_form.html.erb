@@ -1,0 +1,23 @@
+<%= form_for(@registration, html: { class: "form-horizontal", role: "form" }) do |f| %>
+
+  <%# Alert showing errors for this form %>
+  <% if @registration.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@registration.errors.count, "error") %> prohibited this registration from being saved:</h4>
+
+      <ul>
+      <% @registration.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%# Submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end -%>
